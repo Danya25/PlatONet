@@ -1,50 +1,27 @@
 # PlatONet
-PlatONetÊÇPlatONÍøÂçµÄ.dotnet SDK¡£¸ÃSDK»ùÓÚ.net standard 2.0£¬¾ßÓĞÁ¼ºÃµÄ¿çÆ½Ì¨ĞÔÄÜ¡£
+PlatONet PlatON.dotnet SDKã€‚SDK.net standard 2.0ã€‚
 
-PlatONetÖ÷ÒªÒÀÀµÓÚBouncyCastleºÍNethereumÁ½¸ö¿ªÔ´ÏîÄ¿¡£
-# Ê¹ÓÃ½Ì³Ì
+PlatONet BouncyCastle Nethereumã€‚
+# Tutorial
 
-## 1. ´ÓÔ´Âë±àÒëÊ¹ÓÃ
+## 1. Compile from source code
 
-### 1.1. °²×°.NET Core 3.1
+### 1.1. Use .NET Core 3.1
 
-ÔÚ¿ªÊ¼Ö®Ç°£¬ÇëÎñ±Ø°²×°.NET Core 3.1£¬¾ßÌå°²×°·½·¨Çë²Î¿¼£º[Install .NET on Windows, Linux, and macOS](https://docs.microsoft.com/en-us/dotnet/core/install/)¡£
+Install it from docs.microsoft.comï¼š[Install .NET on Windows, Linux, and macOS](https://docs.microsoft.com/en-us/dotnet/core/install/)ã€‚
 
-### 1.2. °ü»¹Ô­
+### 1.2. Package restore
 
-°ü»¹Ô­µÄ¹¦ÄÜÊÇ´ÓNuGetÖĞÏÂÔØÏîÄ¿ÒıÓÃµÄ°ü£¬¸ù¾İÍøÂç»·¾³²»Í¬¿ÉÄÜĞèÒª½Ï³¤Ê±¼ä¡£
+The function of package restoration is to download the package referenced by the project from NuGet, which may take a long time depending on the network environmentã€‚
 
-Èç¹ûÄãÊ¹ÓÃVisual Studio 2019´ò¿ª±¾ÏîÄ¿£¬Ò»°ãÇé¿öÏÂÔÚ´ò¿ªÏîÄ¿ºó»á×Ô¶¯½øĞĞ°ü»¹Ô­£¬Èç¹û°ü»¹Ô­Ã»ÓĞ×Ô¶¯½øĞĞ£¬¿ÉÒÔÍ¨¹ıÔÚ½â¾ö·½°¸×ÊÔ´¹ÜÀíÆ÷ÖĞÓÒ¼üµ¥»÷½â¾ö·½°¸£¬Ñ¡Ôñ¡°»¹Ô­NuGet°ü(R)¡±À´½øĞĞ°ü»¹Ô­¡£
+If you open this project using Visual Studio 2019, package restore will be automatically restored after opening the project. If the package restore is not automatically done, you can right-click the solution in Solution Explorer and select "Restore NuGet Package (R)" to restore the package.
 
-Ò²¿ÉÒÔÔÚÏîÄ¿¸ùÄ¿Â¼Ê¹ÓÃÃüÁîĞĞÔËĞĞ `dotnet restore` ÃüÁîÀ´ÏÔÊ½µÄ½øĞĞ NuGet °ü»¹Ô­ÒÀÀµÏî¡£µ«ÔÚ´ó¶àÊıÇé¿öÏÂ£¬²»ĞèÒªÏÔÊ½Ê¹ÓÃ `dotnet restore` ÃüÁî£¬ÒòÎªÔÚÔËĞĞºóĞøÃüÁîÊ±£¬½«»áÔÚ±ØÒªÊ±ÒşÊ½ÔËĞĞ NuGet »¹Ô­¡£
+You can also use the command line to run the `dotnet restore` command in the project root directory to explicitly restore the dependencies of the NuGet package. But in most cases, it is not necessary to use the `dotnet restore` command explicitly, because when running subsequent commands, NuGet restore will be run implicitly if necessary.
 
-### 1.3. Éú³ÉÏîÄ¿
+### 1.3. Generate project
 
-Èç¹ûÄúÊ¹ÓÃVisual Studio 2019×÷Îª¿ª·¢¹¤¾ß£¬Äú¿ÉÒÔÍ¨¹ı**Éú³É->Éú³ÉÏîÄ¿**À´½øĞĞÏîÄ¿Éú³É£¬Ò²¿ÉÒÔÔÚÃüÁîĞĞÖĞÊ¹ÓÃ `dotnet build` À´Éú³ÉÏîÄ¿¡£
+If you use Visual Studio 2019 as a development tool, you can use the build->project** to generate the project, or you can use `dotnet build` to generate the project on the command line.
 
-### 1.4. ÔËĞĞÊ¾Àı
+### 1.4. Examples
 
-ÎªÁË°ïÖú´ó¼Ò¸ü¿ìµÄÁË½âÈçºÎÊ¹ÓÃPlatONet£¬ÌØ±àĞ´ÁËÊ¾Àı¡£ÀïÃæ°üº¬ÁË²éÑ¯ĞÅÏ¢¡¢×ªÕË¡¢ÖÇÄÜºÏÔ¼²¿Êğ¡¢ÖÇÄÜºÏÔ¼µ÷ÓÃµÈ»ù±¾²Ù×÷£¬´ó¼Ò¿ÉÒÔ×ÔĞĞÌ½Ë÷Ê¹ÓÃ¡£
-
-## 2. °²×°NuGet°ü
-
-´ò¿ªNugetÃüÁîĞĞ¹¤¾ß£¬ÔËĞĞÒÔÏÂÃüÁî£º
-
-```powershell
-Install-Package PlatONet
-```
-
-»òÊ¹ÓÃVisual StudioµÄNuGet°ü¹ÜÀíÆ÷£¬ËÑË÷²¢°²×°`PlatONet`¡£
-
-## 3. ÎÄµµ
-
-ÎÄµµµØÖ·£ºhttps://rileyge.github.io/platonet-documents/
-
-## 4. ²ÎÓë±¾ÏîÄ¿
-
-ÈÎºÎĞÎÊ½µÄ²ÎÓë±¾ÏîÄ¿¶¼ÊÇ»¶Ó­µÄ£¬Äã¿ÉÒÔ£º
-
-- Í¨¹ıIssue¿ÉDiscussionsÀ´²ÎÓë±¾ÏîÄ¿ÌÖÂÛ
-- Í¨¹ıPull RequestÏò±¾ÏîÄ¿Ìá½»´úÂë
-- ×ÊÖú±¾ÏîÄ¿£ºPlatONÇ®°üµØÖ·£ºlat1vvtea8l8ve7xu0pncwgrgavdpkkql4e25jp6gk
-- ¸øÎÒÔËĞĞµÄ½ÚµãÍ¶Æ±£¬½ÚµãÃû[rileyge](https://scan.platon.network/node-detail?address=0x78d2f0cb6b261f41c17893dbec000010818ffba2b41732d4a6d16b8af36e05f51d19529adae4674a2538cd5622974c0e9d60eab10de42099c4a600c435c4714f)Í¶Æ±
+To help everyone understand how to use PlatONet faster, an example was specially written. It contains basic operations such as query information, transfer, smart contract deployment, smart contract call, etc., and you can explore and use it yourself.
