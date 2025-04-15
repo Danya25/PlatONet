@@ -6,6 +6,7 @@ using Nethereum.RPC;
 using Nethereum.Hex.HexTypes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Net.Http;
 using PlatONet.DTOs;
 
 namespace PlatONet
@@ -46,9 +47,17 @@ namespace PlatONet
         /// 如果初始化时不传入私钥，也可以使用<see cref="InitAccount(string)"/>或者<see cref="InitAccount(Account)"/>来重新传入私钥。</param>
         /// <param name="initChainIdAndHrp">是否自动填充ChainId和Hrp<br/> 
         /// 注：如果初始化时不进行ChainId和Hrp的填充，后续也可以使用<see cref="InitChainIdAndHrp"/>方法来进行填充。</param>
-        public Web3(string uri, string privateKey, bool initChainIdAndHrp = true)
+        public Web3(string uri, string privateKey, bool initChainIdAndHrp = true, HttpClient http = null)
         {
-            client = new RpcClient(new Uri(uri));
+            if (http is null)
+            {
+                var httpClientHandler = new HttpClientHandler();
+                http = new HttpClient(httpClientHandler)
+                {
+                    Timeout = TimeSpan.FromSeconds(60)
+                };
+            }
+            client = new RpcClient(new Uri(uri), http);
             InitPlatON(client);
             InitAccount(privateKey);
             if (initChainIdAndHrp) InitChainIdAndHrp();
