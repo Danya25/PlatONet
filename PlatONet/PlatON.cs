@@ -903,7 +903,7 @@ namespace PlatONet
                 { "topics", topics }
             };
             //if (Client == null) throw new NullReferenceException("RpcRequestHandler Client is null");
-            return ExcuteCommand<FilterLog[]>(ApiMplatonods.platon_getFilterLogs.ToString(), dict);
+            return ExcuteCommand<FilterLog[]>(ApiMplatonods.platon_getLogs.ToString(), dict);
         }
         /// <summary>
         /// 返回指定过滤器中的所有日志--异步操作
@@ -924,7 +924,7 @@ namespace PlatONet
                 { "topics", topics }
             };
             //if (Client == null) throw new NullReferenceException("RpcRequestHandler Client is null");
-            return await ExcuteCommandAsync<FilterLog[]>(ApiMplatonods.platon_getFilterLogs.ToString(), dict);
+            return await ExcuteCommandAsync<FilterLog[]>(ApiMplatonods.platon_getLogs.ToString(), dict);
         }
         /// <summary>
         /// 查询待处理交易
