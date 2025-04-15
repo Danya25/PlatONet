@@ -353,7 +353,7 @@ namespace PlatONet
         /// <param name="blockNumber">块高度</param>
         public BlockParameter(ulong blockNumber)
         {
-            BlockNumber = blockNumber.ToString();
+            BlockNumber = new HexBigInteger(blockNumber).HexValue;
         }
         /// <summary>
         /// 使用参数初始化<see cref="BlockParameter"/>实例
@@ -370,7 +370,7 @@ namespace PlatONet
                 try
                 {
                     Convert.ToUInt64(param);
-                    BlockNumber = param;
+                    BlockNumber = new HexBigInteger(param).HexValue;
                 }catch (Exception)
                 {
                     BlockNumber = "latest";
